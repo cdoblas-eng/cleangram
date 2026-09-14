@@ -68,11 +68,18 @@ function roundedRectInside(px, py, size, radius) {
   return outside + Math.min(Math.max(qx, qy), 0) - radius <= 0;
 }
 
-const FROM = [0x00, 0x95, 0xf6];
-const TO = [0xc1, 0x35, 0x84];
+const FROM = [0x22, 0xd3, 0xee];
+const TO = [0x34, 0xd3, 0x99];
 
 function lerp(a, b, t) {
   return a + (b - a) * t;
+}
+
+function sparkle(px, py, cx, cy, r) {
+  const dx = Math.abs(px - cx) / r;
+  const dy = Math.abs(py - cy) / r;
+  if (dx > 1 || dy > 1) return false;
+  return Math.sqrt(dx) + Math.sqrt(dy) <= 1;
 }
 
 function sample(px, py, size, radius) {
@@ -83,22 +90,10 @@ function sample(px, py, size, radius) {
   let g = Math.round(lerp(FROM[1], TO[1], t));
   let b = Math.round(lerp(FROM[2], TO[2], t));
 
-  const cx = size / 2;
-  const cy = size / 2;
-  const barW = size * 0.13;
-  const barH = size * 0.46;
-  const gap = size * 0.12;
-  const top = cy - barH / 2;
-  const bottom = cy + barH / 2;
-  const left1 = cx - gap / 2 - barW;
-  const right1 = cx - gap / 2;
-  const left2 = cx + gap / 2;
-  const right2 = cx + gap / 2 + barW;
+  const main = sparkle(px, py, size * 0.46, size * 0.5, size * 0.32);
+  const small = sparkle(px, py, size * 0.74, size * 0.26, size * 0.14);
 
-  const inBar = (lx, rx) =>
-    px >= lx && px <= rx && py >= top && py <= bottom;
-
-  if (inBar(left1, right1) || inBar(left2, right2)) {
+  if (main || small) {
     r = 255;
     g = 255;
     b = 255;

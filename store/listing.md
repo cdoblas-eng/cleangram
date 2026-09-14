@@ -1,18 +1,18 @@
-# BetterInsta — material para Chrome Web Store
+# CleanGram — material para Chrome Web Store
 
 ## Ficha
 
-- **Nombre** (máx. 45): `BetterInsta — menos scroll`
+- **Nombre** (máx. 45): `CleanGram — menos scroll`
 - **Resumen corto** (máx. 132): `Oculta Reels, Explorar y publicaciones sugeridas, deja solo Siguiendo y bloquea el scroll infinito de Instagram.`
 - **Categoría sugerida**: Productividad (alternativa: Estilo de vida / Bienestar)
 - **Idioma principal**: Español
-- **Página de privacidad**: `https://TU_USUARIO.github.io/betterinsta/privacy.html`
-- **Sitio web**: `https://github.com/TU_USUARIO/betterinsta`
+- **Página de privacidad**: `https://cdoblas-eng.github.io/cleangram/privacy.html`
+- **Sitio web**: `https://github.com/cdoblas-eng/cleangram`
 
 ## Descripción detallada
 
 ```
-BetterInsta reduce el uso compulsivo de Instagram web quitando de en medio
+CleanGram reduce el uso compulsivo de Instagram web quitando de en medio
 lo que engancha y no aporta: Reels, Explorar, publicaciones sugeridas y el
 scroll infinito. Tú decides qué desactivar desde el icono de la extensión.
 
@@ -31,7 +31,7 @@ analíticas ni rastreadores. Solo se guardan tus preferencias de activación
 con chrome.storage.sync.
 
 CÓDIGO ABIERTO
-https://github.com/TU_USUARIO/betterinsta
+https://github.com/cdoblas-eng/cleangram
 ```
 
 ## Justificación de permisos
@@ -67,6 +67,6 @@ No se usan permisos de red adicionales ni código remoto.
 ## Subida
 
 1. Comprimir el contenido **sin** la carpeta raíz (manifest.json en la raíz del zip):
-   `zip -r betterinsta.zip manifest.json icons content popup -x "*.DS_Store"`
-2. Subir `betterinsta.zip` en <https://chrome.google.com/webstore/devconsole>.
+   `zip -r cleangram.zip manifest.json icons content popup -x "*.DS_Store"`
+2. Subir `cleangram.zip` en <https://chrome.google.com/webstore/devconsole>.
 3. Rellenar ficha, permisos y prácticas de privacidad con lo de arriba.

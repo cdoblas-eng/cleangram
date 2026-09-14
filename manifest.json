@@ -1,6 +1,6 @@
 {
   "manifest_version": 3,
-  "name": "BetterInsta",
+  "name": "CleanGram",
   "version": "1.0.0",
   "description": "Desactiva funciones de Instagram web (Reels, Explorar, publicaciones sugeridas y scroll infinito) para reducir el tiempo de uso.",
   "permissions": ["storage"],
@@ -12,7 +12,7 @@
     "128": "icons/icon128.png"
   },
   "action": {
-    "default_title": "BetterInsta",
+    "default_title": "CleanGram",
     "default_popup": "popup/popup.html",
     "default_icon": {
       "16": "icons/icon16.png",

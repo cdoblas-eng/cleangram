@@ -1,4 +1,4 @@
-# BetterInsta
+# CleanGram
 
 Extensión de Chrome que desactiva funciones de Instagram web para reducir el tiempo de uso.
 
@@ -47,8 +47,8 @@ Usa Manifest V3 y la API `chrome.*`, así que funciona en navegadores basados en
 Resumen en [`store/listing.md`](store/listing.md). Datos clave:
 
 - Coste único de desarrollador en Chrome Web Store: **5 USD**. Publicar es gratis.
-- Empaquetar sin la carpeta raíz: `zip -r betterinsta.zip manifest.json icons content popup -x "*.DS_Store"`.
-- Subir `betterinsta.zip` en <https://chrome.google.com/webstore/devconsole>.
+- Empaquetar sin la carpeta raíz: `zip -r cleangram.zip manifest.json icons content popup -x "*.DS_Store"`.
+- Subir `cleangram.zip` en <https://chrome.google.com/webstore/devconsole>.
 - Publicar `docs/` con GitHub Pages para tener la URL de privacidad.
 
 ## Notas
