@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>BetterInsta — Política de privacidad</title>
+    <style>
+      :root {
+        color-scheme: light dark;
+      }
+      body {
+        max-width: 720px;
+        margin: 0 auto;
+        padding: 40px 20px 80px;
+        font: 16px/1.65 -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+        color: #1a1a1a;
+        background: #fff;
+      }
+      @media (prefers-color-scheme: dark) {
+        body {
+          color: #e8e8e8;
+          background: #0d0d0d;
+        }
+        a {
+          color: #4aa8ff;
+        }
+      }
+      h1 {
+        font-size: 28px;
+      }
+      h2 {
+        margin-top: 40px;
+        font-size: 20px;
+      }
+      hr {
+        margin: 48px 0;
+        border: none;
+        border-top: 1px solid currentColor;
+        opacity: 0.15;
+      }
+      code {
+        padding: 2px 5px;
+        border-radius: 4px;
+        background: rgba(128, 128, 128, 0.18);
+      }
+    </style>
+  </head>
+  <body>
+    <h1>BetterInsta — Política de privacidad</h1>
+    <p>Última actualización: 14 de septiembre de 2026.</p>
+
+    <h2>Resumen</h2>
+    <p>
+      BetterInsta <strong>no recopila, almacena, transmite ni comparte ningún dato
+      personal</strong>. Toda la extensión funciona localmente en tu navegador y no
+      se comunica con ningún servidor propio ni de terceros.
+    </p>
+
+    <h2>Qué datos usa</h2>
+    <ul>
+      <li>
+        <strong>Preferencias:</strong> las opciones de activación/desactivación
+        (Reels, Explorar, Solo Siguiendo) se guardan con
+        <code>chrome.storage.sync</code>. Este almacenamiento es gestionado por el
+        navegador y, si el usuario tiene la sincronización activada, Google puede
+        replicarlas entre sus dispositivos según su propia política de privacidad.
+        El desarrollador no tiene acceso a esos datos.
+      </li>
+      <li>
+        <strong>Contenido de Instagram:</strong> la extensión lee y modifica el DOM
+        de <code>instagram.com</code> en tu propio navegador para ocultar elementos.
+        Ese contenido nunca se envía fuera de tu dispositivo.
+      </li>
+    </ul>
+
+    <h2>Permisos</h2>
+    <ul>
+      <li><code>storage</code>: guardar tus preferencias.</li>
+      <li>
+        <code>host_permissions</code> sobre <code>*://*.instagram.com/*</code>:
+        necesario para aplicar los cambios visuales en Instagram.
+      </li>
+    </ul>
+
+    <h2>Qué NO hace</h2>
+    <ul>
+      <li>No recopila analíticas ni telemetría.</li>
+      <li>No usa cookies propias ni rastreadores.</li>
+      <li>No vende ni comparte datos con terceros.</li>
+      <li>No tiene servidores ni back-end.</li>
+    </ul>
+
+    <h2>Código fuente</h2>
+    <p>
+      El código es abierto y puede auditarse en
+      <a href="https://github.com/cdoblas/betterinsta">github.com/cdoblas/betterinsta</a>.
+    </p>
+
+    <h2>Contacto</h2>
+    <p>
+      Para cualquier duda: <a href="mailto:cdoblas.eng@gmail.com">cdoblas.eng@gmail.com</a>.
+    </p>
+
+    <hr />
+
+    <h1>BetterInsta — Privacy Policy (English)</h1>
+    <p>Last updated: September 14, 2026.</p>
+    <h2>Summary</h2>
+    <p>
+      BetterInsta <strong>does not collect, store, transmit, or share any personal
+      data</strong>. Everything runs locally in your browser with no server
+      communication.
+    </p>
+    <h2>Data used</h2>
+    <ul>
+      <li>
+        <strong>Preferences</strong> are stored with
+        <code>chrome.storage.sync</code>, managed by the browser. If sync is enabled,
+        Google may replicate them across your devices under its own policy; the
+        developer has no access.
+      </li>
+      <li>
+        <strong>Instagram content</strong> is read/modified in your browser's DOM to
+        hide elements. It never leaves your device.
+      </li>
+    </ul>
+    <h2>Permissions</h2>
+    <ul>
+      <li><code>storage</code>: save your preferences.</li>
+      <li><code>host_permissions</code> for <code>*://*.instagram.com/*</code>: apply visual changes on Instagram.</li>
+    </ul>
+    <h2>Contact</h2>
+    <p><a href="mailto:cdoblas.eng@gmail.com">cdoblas.eng@gmail.com</a></p>
+  </body>
+</html>

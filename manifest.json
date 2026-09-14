@@ -1,13 +1,25 @@
 {
   "manifest_version": 3,
   "name": "BetterInsta",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "description": "Desactiva funciones de Instagram web (Reels, Explorar, publicaciones sugeridas y scroll infinito) para reducir el tiempo de uso.",
   "permissions": ["storage"],
   "host_permissions": ["*://*.instagram.com/*"],
+  "icons": {
+    "16": "icons/icon16.png",
+    "32": "icons/icon32.png",
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
+  },
   "action": {
     "default_title": "BetterInsta",
-    "default_popup": "popup/popup.html"
+    "default_popup": "popup/popup.html",
+    "default_icon": {
+      "16": "icons/icon16.png",
+      "32": "icons/icon32.png",
+      "48": "icons/icon48.png",
+      "128": "icons/icon128.png"
+    }
   },
   "content_scripts": [
     {

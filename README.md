@@ -22,14 +22,34 @@ Las opciones Reels, Explorar y Solo Siguiendo se gestionan desde el popup y se g
 ## Estructura
 
 ```
-manifest.json        Manifest V3
+manifest.json          Manifest V3
 content/
-  content.js         Aplica las opciones al DOM de Instagram
-  content.css        Reglas de ocultado
-  inject.js          Bloquea la paginación (scroll infinito) en el contexto de página
+  content.js           Aplica las opciones al DOM de Instagram
+  content.css          Reglas de ocultado
+  inject.js            Bloquea la paginación (scroll infinito) en el contexto de página
 popup/
-  popup.html/css/js  Interfaz de configuración
+  popup.html/css/js    Interfaz de configuración
+icons/                 Iconos 16/32/48/128
+tools/
+  generate-icons.mjs   Regenera los iconos (Node, sin dependencias)
+docs/
+  privacy.html         Política de privacidad
+store/
+  listing.md           Material y checklist para la Chrome Web Store
 ```
+
+## Compatibilidad
+
+Usa Manifest V3 y la API `chrome.*`, así que funciona en navegadores basados en Chromium: **Chrome, Edge, Brave, Opera, Vivaldi, Arc**, etc. Cada uno tiene su propia tienda (Edge Add-ons, Opera Add-ons...); el código es el mismo, solo cambia dónde se publica. Firefox **no** es Chromium y no soporta `world: "MAIN"` en content scripts, por lo que `content/inject.js` necesitaría adaptación.
+
+## Publicación
+
+Resumen en [`store/listing.md`](store/listing.md). Datos clave:
+
+- Coste único de desarrollador en Chrome Web Store: **5 USD**. Publicar es gratis.
+- Empaquetar sin la carpeta raíz: `zip -r betterinsta.zip manifest.json icons content popup -x "*.DS_Store"`.
+- Subir `betterinsta.zip` en <https://chrome.google.com/webstore/devconsole>.
+- Publicar `docs/` con GitHub Pages para tener la URL de privacidad.
 
 ## Notas
 
