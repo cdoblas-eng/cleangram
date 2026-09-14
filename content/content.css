@@ -1,0 +1,24 @@
+html[data-bi-reels="on"] a[href="/reels/"],
+html[data-bi-reels="on"]:not([data-bi-view="direct"]):not([data-bi-view="reel"]):not([data-bi-view="reels"]) [aria-label="Reels"],
+html[data-bi-reels="on"][data-bi-view="feed"] article:has(a[href*="/reel/"]) {
+  display: none !important;
+}
+
+html[data-bi-explore="on"] a[href^="/explore"],
+html[data-bi-explore="on"] a[href*="/explore/"],
+html[data-bi-explore="on"] [aria-label="Explorar"],
+html[data-bi-explore="on"] [aria-label="Explore"] {
+  display: none !important;
+}
+
+[data-bi-for-you="hide"] {
+  display: none !important;
+}
+
+[data-bi-suggested="hide"] {
+  display: none !important;
+}
+
+html[data-bi-feed-loaded="on"] main[role="main"] [role="progressbar"] {
+  display: none !important;
+}
