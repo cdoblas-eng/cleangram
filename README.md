@@ -5,7 +5,7 @@ Extensión de Chrome que desactiva funciones de Instagram web para reducir el ti
 ## Funciones
 
 - **Reels**: oculta el tab de Reels y los reels del feed, pero permite abrir un reel compartido (p. ej. por DM). El scroll infinito de reels queda bloqueado.
-- **Explorar**: oculta la pestaña y enlaces de Explorar.
+- **Explorar**: mantiene el botón (para poder seguir buscando usuarios) y oculta el contenido de reels y publicaciones del Explorar.
 - **Solo Siguiendo**: en el inicio oculta la pestaña "Para ti" y deja solo "Siguiendo".
 - **Publicaciones sugeridas**: se ocultan automáticamente (siempre activo) en todo Instagram.
 - **Scroll infinito**: se bloquean las peticiones de paginación del feed, así no se cargan más publicaciones (incluidas las sugeridas).

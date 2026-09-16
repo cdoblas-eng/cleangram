@@ -19,7 +19,8 @@ scroll infinito. Tú decides qué desactivar desde el icono de la extensión.
 QUÉ HACE
 • Reels: oculta el tab de Reels y los reels del feed. Los reels que te
   comparte un amigo por mensaje directo se pueden seguir viendo.
-• Explorar: elimina la pestaña de Explorar.
+• Explorar: mantiene el botón (así puedes seguir buscando usuarios) pero
+  oculta el contenido de reels y publicaciones del Explorar.
 • Solo Siguiendo: en el inicio oculta la pestaña "Para ti" y deja únicamente
   el feed de "Siguiendo".
 • Publicaciones sugeridas: se ocultan automáticamente en todo Instagram.
@@ -43,15 +44,74 @@ https://github.com/cdoblas-eng/cleangram
 
 No se usan permisos de red adicionales ni código remoto.
 
-## Prácticas de privacidad (cuestionario del dashboard)
+## Prácticas de privacidad (textos para la pestaña del dashboard)
 
-- **Single purpose**: reducir distracciones en Instagram web ocultando funciones concretas.
-- **¿Recopila datos?** No. No se recopila ningún dato del usuario.
+Copia y pega cada bloque en el campo correspondiente. Todos están por debajo
+del límite de 1000 caracteres.
+
+### Finalidad única (Single purpose)
+
+```
+CleanGram tiene una finalidad única: reducir el uso compulsivo de Instagram
+web ocultando funciones concretas de su interfaz y dejando solo el feed de
+"Siguiendo". Todas las funciones de la extensión sirven a ese mismo propósito:
+ocultar el tab de Reels y los reels del feed, vaciar el contenido de Explorar
+(sin quitar su botón, para poder seguir buscando),
+ocultar las publicaciones sugeridas, bloquear el scroll infinito y guardar las
+preferencias del usuario. No realiza ninguna otra función ni trata datos para
+fines ajenos a este propósito.
+```
+
+### Justificación del permiso `storage`
+
+```
+El permiso storage se usa exclusivamente para guardar las preferencias de
+activación/desactivación de las opciones de CleanGram (Reels, Explorar y Solo
+Siguiendo) mediante chrome.storage.sync, de modo que se conserven entre
+sesiones y, si el usuario tiene la sincronización activada, entre sus
+dispositivos. Es el único dato que se escribe y no contiene información
+personal ni de navegación. Sin este permiso el usuario tendría que volver a
+configurar la extensión en cada visita.
+```
+
+### Justificación del uso de código remoto
+
+```
+CleanGram no usa código remoto. Todo el JavaScript y el CSS se incluye en el
+propio paquete de la extensión y se ejecuta localmente en el navegador. No se
+cargan scripts ni recursos ejecutables desde servidores externos, no se usa
+eval() y no hay lógica que se descargue en tiempo de ejecución. La extensión
+tampoco realiza peticiones de red.
+```
+
+### Justificación del permiso de host `*://*.instagram.com/*`
+
+```
+El permiso de host *://*.instagram.com/* es necesario porque la extensión solo
+actúa sobre Instagram web. Inyecta una hoja de estilos y un script de contenido
+que leen y modifican el DOM de instagram.com para ocultar Reels, Explorar y las
+publicaciones sugeridas, dejar solo el feed de "Siguiendo" y bloquear el scroll
+infinito. No accede a ningún otro sitio web y no envía datos fuera del
+navegador.
+```
+
+### Otras preguntas del cuestionario
+
+- **¿Recopila datos?** No (seleccionar "No recopila datos del usuario").
 - **¿Usa datos para fines ajenos al propósito?** No.
 - **¿Vende datos a terceros?** No.
 - **¿Usa o transfiere datos para determinar creditworthiness/lending?** No.
-- **¿Código remoto?** No. Todo el código va incluido en el paquete.
-- **Certificación de datos**: marcar las 3 casillas (no se recopilan datos).
+- **Certificación de datos**: marcar las casillas de conformidad con las
+  Políticas del Programa para Desarrolladores.
+
+### Pasos que solo se pueden hacer en el dashboard
+
+1. **Correo de contacto del editor** → página *Configuración*:
+   `cdoblas.eng@gmail.com`.
+2. **Verificar el correo de contacto** → botón *Verificar* en *Configuración*
+   (se recibe un enlace por email).
+3. **Certificar el uso de datos** → pestaña *Prácticas de privacidad*.
+
 
 ## Checklist de assets
 

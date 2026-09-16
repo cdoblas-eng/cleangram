@@ -1,0 +1,160 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8" />
+<title>CleanGram — selector de regiones</title>
+<style>
+  :root { color-scheme: dark; }
+  body { margin: 0; font: 14px/1.4 -apple-system, system-ui, sans-serif; background: #111; color: #eee; display: flex; height: 100vh; }
+  #stage { flex: 1; overflow: auto; padding: 16px; }
+  canvas { cursor: crosshair; touch-action: none; }
+  aside { width: 320px; border-left: 1px solid #333; padding: 16px; overflow: auto; }
+  h1 { font-size: 15px; margin: 0 0 12px; }
+  button { background: #2a2a2a; color: #eee; border: 1px solid #444; border-radius: 6px; padding: 6px 10px; cursor: pointer; }
+  button:hover { background: #333; }
+  ol { padding-left: 20px; }
+  li { margin-bottom: 4px; }
+  code, pre { font-family: ui-monospace, Menlo, monospace; font-size: 12px; }
+  pre { background: #1b1b1b; padding: 10px; border-radius: 6px; white-space: pre-wrap; word-break: break-all; }
+  .hint { color: #888; font-size: 12px; }
+</style>
+</head>
+<body>
+<div id="stage">
+  <p class="hint">Elige una captura, arrastra para marcar cada zona sensible y copia el JSON a <code>tools/redact.config.json</code>.</p>
+  <input type="file" id="file" accept="image/*" />
+  <canvas id="canvas" hidden></canvas>
+</div>
+<aside>
+  <h1>Regiones</h1>
+  <p>
+    <button id="clear">Limpiar</button>
+    <button id="copy">Copiar JSON</button>
+  </p>
+  <ol id="list"></ol>
+  <pre id="json"></pre>
+</aside>
+<script>
+const fileInput = document.getElementById("file");
+const canvas = document.getElementById("canvas");
+const ctx = canvas.getContext("2d");
+const list = document.getElementById("list");
+const jsonOut = document.getElementById("json");
+const img = new Image();
+let rects = [];
+let start = null;
+
+fileInput.addEventListener("change", () => {
+  const file = fileInput.files[0];
+  if (!file) return;
+  img.onload = () => {
+    canvas.hidden = false;
+    canvas.width = img.naturalWidth;
+    canvas.height = img.naturalHeight;
+    canvas.style.width = Math.min(img.naturalWidth, 1100) + "px";
+    canvas.style.height = "auto";
+    rects = [];
+    draw();
+    render();
+  };
+  img.src = URL.createObjectURL(file);
+});
+
+function toImage(e) {
+  const r = canvas.getBoundingClientRect();
+  return {
+    x: ((e.clientX - r.left) / r.width) * canvas.width,
+    y: ((e.clientY - r.top) / r.height) * canvas.height,
+  };
+}
+
+canvas.addEventListener("pointerdown", (e) => {
+  e.preventDefault();
+  canvas.setPointerCapture(e.pointerId);
+  start = toImage(e);
+});
+
+canvas.addEventListener("pointermove", (e) => {
+  if (!start) return;
+  const now = toImage(e);
+  draw({
+    x: Math.min(start.x, now.x),
+    y: Math.min(start.y, now.y),
+    w: Math.abs(now.x - start.x),
+    h: Math.abs(now.y - start.y),
+  });
+});
+
+canvas.addEventListener("pointerup", (e) => {
+  if (!start) return;
+  const now = toImage(e);
+  const rect = {
+    x: Math.min(start.x, now.x) / canvas.width,
+    y: Math.min(start.y, now.y) / canvas.height,
+    w: Math.abs(now.x - start.x) / canvas.width,
+    h: Math.abs(now.y - start.y) / canvas.height,
+  };
+  start = null;
+  if (rect.w > 0.002 && rect.h > 0.002) rects.push(rect);
+  draw();
+  render();
+});
+
+function draw(preview) {
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+  ctx.drawImage(img, 0, 0);
+  const boxes = preview ? [...rects, preview] : rects;
+  ctx.lineWidth = Math.max(2, canvas.width / 500);
+  ctx.strokeStyle = "#ff2d55";
+  ctx.fillStyle = "rgba(255,45,85,0.15)";
+  const scale = canvas.width / 1000;
+  for (const b of boxes) {
+    const x = b.x * canvas.width;
+    const y = b.y * canvas.height;
+    const w = b.w * canvas.width;
+    const h = b.h * canvas.height;
+    ctx.fillRect(x, y, w, h);
+    ctx.strokeRect(x, y, w, h);
+    ctx.fillStyle = "#fff";
+    ctx.font = `${scale * 18}px ui-monospace, monospace`;
+    ctx.fillText("███", x, Math.max(h, scale * 18) + y);
+    ctx.fillStyle = "rgba(255,45,85,0.15)";
+  }
+}
+
+function round(n) {
+  return Math.round(n * 10000) / 10000;
+}
+
+function render() {
+  list.innerHTML = "";
+  rects.forEach((r, i) => {
+    const li = document.createElement("li");
+    const c = document.createElement("code");
+    c.textContent = `x:${round(r.x)} y:${round(r.y)} w:${round(r.w)} h:${round(r.h)}`;
+    const del = document.createElement("button");
+    del.textContent = "×";
+    del.style.marginLeft = "8px";
+    del.onclick = () => { rects.splice(i, 1); draw(); render(); };
+    li.append(c, del);
+    list.append(li);
+  });
+  jsonOut.textContent = JSON.stringify(
+    { file: fileInput.files[0]?.name ?? "", regions: rects.map((r) => ({
+      x: round(r.x), y: round(r.y), w: round(r.w), h: round(r.h),
+    })) },
+    null,
+    2
+  );
+}
+
+document.getElementById("clear").onclick = () => { rects = []; draw(); render(); };
+document.getElementById("copy").onclick = async () => {
+  await navigator.clipboard.writeText(jsonOut.textContent);
+  const b = document.getElementById("copy");
+  b.textContent = "¡Copiado!";
+  setTimeout(() => { b.textContent = "Copiar JSON"; }, 1200);
+};
+</script>
+</body>
+</html>

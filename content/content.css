@@ -4,10 +4,9 @@ html[data-bi-reels="on"][data-bi-view="feed"] article:has(a[href*="/reel/"]) {
   display: none !important;
 }
 
-html[data-bi-explore="on"] a[href^="/explore"],
-html[data-bi-explore="on"] a[href*="/explore/"],
-html[data-bi-explore="on"] [aria-label="Explorar"],
-html[data-bi-explore="on"] [aria-label="Explore"] {
+html[data-bi-explore="on"][data-bi-view="explore"] main[role="main"] a[href*="/reel/"],
+html[data-bi-explore="on"][data-bi-view="explore"] main[role="main"] a[href*="/p/"],
+html[data-bi-explore="on"][data-bi-view="explore"] main[role="main"] article {
   display: none !important;
 }
 

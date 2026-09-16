@@ -104,6 +104,7 @@ function resolveView(path) {
   if (path.startsWith("/direct")) return "direct";
   if (path.startsWith("/reels")) return "reels";
   if (path.startsWith("/reel/")) return "reel";
+  if (path.startsWith("/explore/search")) return "search";
   if (path.startsWith("/explore")) return "explore";
   return "other";
 }

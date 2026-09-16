@@ -1,0 +1,55 @@
+{
+  "inputDir": "screenshots",
+  "outputDir": "screenshots/redacted",
+  "mode": "pixelate",
+  "block": 18,
+  "padding": 3,
+  "resize": { "width": 1280, "height": 800, "background": "#000000" },
+  "images": [
+    {
+      "file": "Captura de pantalla 2026-09-14 a las 12.31.01.png",
+      "regions": [
+        { "x": 0.01, "y": 0.72, "w": 0.07, "h": 0.08 }
+      ]
+    },
+    {
+      "file": "Captura de pantalla 2026-09-14 a las 12.33.28.png",
+      "regions": [
+        { "x": 0.145, "y": 0.16, "w": 0.47, "h": 0.16 },
+        { "x": 0.2, "y": 0.37, "w": 0.32, "h": 0.07 },
+        { "x": 0.635, "y": 0.12, "w": 0.34, "h": 0.53 },
+        { "x": 0.93, "y": 0.87, "w": 0.055, "h": 0.07 },
+        { "x": 0.008, "y": 0.65, "w": 0.035, "h": 0.06 }
+      ]
+    },
+    {
+      "file": "Captura de pantalla 2026-09-14 a las 12.33.40.png",
+      "regions": [
+        { "x": 0.145, "y": 0.16, "w": 0.47, "h": 0.16 },
+        { "x": 0.2, "y": 0.37, "w": 0.32, "h": 0.07 },
+        { "x": 0.635, "y": 0.12, "w": 0.34, "h": 0.53 },
+        { "x": 0.93, "y": 0.87, "w": 0.055, "h": 0.07 },
+        { "x": 0.008, "y": 0.65, "w": 0.035, "h": 0.06 }
+      ]
+    },
+    {
+      "file": "Captura de pantalla 2026-09-14 a las 12.34.49.png",
+      "regions": [
+        { "x": 0.145, "y": 0.16, "w": 0.47, "h": 0.16 },
+        { "x": 0.2, "y": 0.37, "w": 0.32, "h": 0.07 },
+        { "x": 0.63, "y": 0.12, "w": 0.105, "h": 0.29 },
+        { "x": 0.63, "y": 0.41, "w": 0.28, "h": 0.23 },
+        { "x": 0.93, "y": 0.87, "w": 0.055, "h": 0.07 },
+        { "x": 0.008, "y": 0.65, "w": 0.035, "h": 0.06 }
+      ]
+    },
+    {
+      "file": "screenshots/redacted/instagram.png",
+      "regions": []
+    },
+    {
+      "file": "screenshots/redacted/cleangram.png",
+      "regions": []
+    }
+  ]
+}
